@@ -1,0 +1,95 @@
+from tkinter import*
+
+def fun1():
+    print("It's Working")
+
+def btnClick(numbers):
+    global operator
+    operator=operator+str(numbers)
+    text_Input.set(operator)
+def btnClearDisplay():
+    global operator
+    operator=""
+    text_Input.set("")
+def btnequalinput():
+    global operator
+    sumup=str(eval(operator)) #evaluete
+    text_Input.set(sumup)
+    
+    
+
+win=Tk()
+win.title("Calulator")
+operator=""
+win.geometry("315x320")
+win.config(bg="pink")
+
+#title image
+
+p1 = PhotoImage(file = 'calculator.png')
+# Setting icon of master window
+
+win.iconphoto(False, p1)
+playPhoto=PhotoImage(file="play.png")
+    
+menu1=Menu(win)
+win.config(menu=menu1,bg="pink")
+subMenu1=Menu(menu1)
+
+
+menu1.add_cascade(label="view",menu=subMenu1)
+subMenu1.add_command(label="New File") 
+subMenu1.add_command(label="Open")
+subMenu1.add_command(label="Open Module")
+subMenu1.add_command(label="Recent File") 
+subMenu1.add_command(label="Module Brower")
+subMenu1.add_command(label="Path Browser")
+subMenu1.add_command(label="Save") 
+subMenu1.add_command(label="Save As")
+subMenu1.add_command(label="Save Copy As")
+subMenu1.add_command(label="Print Window") 
+subMenu1.add_command(label="Close")
+subMenu1.add_command(label="Exit")
+
+EditMenu=Menu(menu1)
+menu1.add_cascade(label="Edit",menu=EditMenu)
+EditMenu.add_cascade(label="About IDLE",command=fun1)
+EditMenu.add_cascade(label="IDLE Help",command=fun1)
+EditMenu.add_cascade(label="Python Docs",command=fun1)
+EditMenu.add_cascade(label="Turtle Demo",command=fun1)
+
+HelpMenu=Menu(menu1)
+menu1.add_cascade(label="Edit",menu=HelpMenu)
+HelpMenu.add_cascade(label="About IDLE",command=fun1)
+HelpMenu.add_cascade(label="IDLE Help",command=fun1)
+HelpMenu.add_cascade(label="Python Docs",command=fun1)
+HelpMenu.add_cascade(label="Turtle Demo",command=fun1)
+
+
+text_Input=StringVar()
+textDisplay=Entry(win,font=('sans',20,'bold'),textvariable=text_Input,bd=10,insertwidth=4,bg='white',width=15).grid(columnspan=4)
+btn7=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='7',command=lambda:btnClick(7)).grid(row=1,column=0,)
+btn8=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='8',command=lambda:btnClick(8)).grid(row=1,column=1)
+btn9=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='9',command=lambda:btnClick(9)).grid(row=1,column=2)
+
+Addition=Button(win,padx=25,pady=10,bd=5,fg='white',bg='red',font=('sans',12),text="+",command=lambda:btnClick('+')).grid(row=1,column=3)
+
+
+btn4=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='4',command=lambda:btnClick(4)).grid(row=2,column=0,)
+btn5=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='5',command=lambda:btnClick(5)).grid(row=2,column=1)
+btn6=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='6',command=lambda:btnClick(6)).grid(row=2,column=2)
+
+Subtraction=Button(win,padx=25,pady=10,bd=5,fg='white',bg='red',font=('sans',12,'bold'),text="-",command=lambda:btnClick('-')).grid(row=2,column=3)
+
+
+btn1=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='1',command=lambda:btnClick(1)).grid(row=3,column=0,)
+btn2=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='2',command=lambda:btnClick(2)).grid(row=3,column=1)
+btn3=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='3',command=lambda:btnClick(3)).grid(row=3,column=2)
+
+Multiply=Button(win,padx=25,pady=10,bd=5,fg='white',bg='red',font=('sans',12),text="x",command=lambda:btnClick('*')).grid(row=3,column=3)
+
+
+btn0=Button(win,padx=25,pady=10,bd=5,fg='white',bg="red",font=('sans',10,'bold'),text='0',command=lambda:btnClick(0)).grid(row=4,column=0,)
+btnClear=Button(win,padx=23,pady=10,bd=5,fg='white',bg='red',font=('sans',10,'bold'),text='C',command=btnClearDisplay).grid(row=4,column=1)
+btnEqual=Button(win,padx=23,pady=10,bd=5,fg='white',bg='red',font=('sans',10,'bold'),text='=',command=btnequalinput).grid(row=4,column=2)
+Divison=Button(win,padx=20,pady=10,bd=5,fg='white',bg='red',font=('sans',12,'bold'),text='/',command=lambda:btnClick('/')).grid(row=4,column=3)
